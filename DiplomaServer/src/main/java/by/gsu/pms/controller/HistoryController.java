@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@CrossOrigin(origins = "http://35.228.149.66:80")
+@CrossOrigin(origins = "http://35.228.149.66")
 @RestController
 @RequestMapping("history")
 public class HistoryController {

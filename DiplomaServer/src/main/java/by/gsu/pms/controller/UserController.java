@@ -11,7 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 
-@CrossOrigin(origins = "http://35.228.149.66:80")
+@CrossOrigin(origins = "http://35.228.149.66")
 @RestController
 @RequestMapping("user")
 public class UserController {

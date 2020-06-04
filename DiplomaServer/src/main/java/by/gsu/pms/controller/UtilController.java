@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "http://35.228.149.66:80")
+@CrossOrigin(origins = "http://35.228.149.66")
 @RestController
 @RequestMapping("util")
 public class UtilController {

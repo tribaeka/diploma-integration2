@@ -24,7 +24,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 
-@CrossOrigin(origins = "http://35.228.149.66:80")
+@CrossOrigin(origins = "http://35.228.149.66")
 @RestController
 @RequestMapping("cv")
 public class CvController {

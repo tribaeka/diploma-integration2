@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.function.Predicate;
 
-@CrossOrigin(origins = "http://35.228.149.66:80")
+@CrossOrigin(origins = "http://35.228.149.66")
 @RestController
 @RequestMapping("job")
 public class JobController {
