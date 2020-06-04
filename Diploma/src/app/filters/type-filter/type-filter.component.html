@@ -1,0 +1,24 @@
+<div class="row py-4">
+  <div class="col-12">
+    <div class="dropdown">
+      Remote:
+      <button class="btn btn-info dropdown-toggle"
+              type="button" id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
+        {{filterValue}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item"
+           (click)="applyTypeFilter('All')">
+          All
+        </a>
+        <a class="dropdown-item"
+           (click)="applyTypeFilter('Remote')">
+          Remote
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

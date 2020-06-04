@@ -1,0 +1,36 @@
+<form class="search-form"
+      [formGroup]="searchForm"
+      (clickOutside)="closeDropDown()"
+      (ngSubmit)="startSearch()">
+  <div class="input-group mb-0">
+    <div class="search-input-wrapper d-inline-block">
+      <img class="position-absolute my-2 x-icon"
+           [src]="activePath"
+           (mouseenter)="mouseEnterHandler()"
+           (mouseleave)="mouseLeaveHandler()"
+           (click)="clearInput()"
+           width="30"
+           height="30"
+           alt="">
+      <input class="search-input form-control d-inline-block"
+             type="text"
+             formControlName="query"
+             value="{{getUnionQuery()}}"
+             #searchInput
+             (ngModelChange)="updateQueryOnChange(searchForm.value.query)"
+             (focus)="openDropDown()"
+             placeholder="Enter job, skill, company or location">
+    </div>
+    <button class="btn btn-primary search-btn" type="submit">Search</button>
+  </div>
+  <ul *ngIf="showDropDown" class="search-drop-down list-unstyled">
+    <li *ngFor="let option of options | autocompleteFilter: query"
+        class="search-drop-down-item w-100"
+        [ngClass]="{'bg-primary text-light': activeOption === option}"
+        (click)="updateQueryOnSelectOption(option); searchInput.focus()"
+        (mouseenter)="setActiveOption(option)"
+        (mouseleave)="setActiveOption(null)">
+      <span [innerHTML]="option | autocompleteBoldLetter: query"></span>
+    </li>
+  </ul>
+</form>

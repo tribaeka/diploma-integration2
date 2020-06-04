@@ -1,0 +1,49 @@
+<div class="modal fade"
+     id="jobRespondModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="jobRespondModal"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"
+            id="exampleModalLabel">Select Cv</h5>
+        <button type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="jobRespondForm"
+            (ngSubmit)="onSubmit()">
+        <div class="modal-body" *ngIf="cvList">
+          <div class="form-group">
+            <label>Select CV</label>
+            <select class="form-control"
+                    formControlName="cv"
+                    [(ngModel)]="cvList[0].cvId">
+              <option *ngFor="let cv of cvList" [ngValue]="cv.cvId">{{cv.title}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Comment</label>
+            <textarea formControlName="comment"
+                      placeholder="You can leave additional comment here"
+                      rows="3"
+                      class="form-control"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer login-form-footer justify-content-between">
+          <button type="button"
+                  #closeBtn
+                  class="btn btn-secondary"
+                  data-dismiss="modal">Close</button>
+          <button type="submit"
+                  class="btn btn-primary">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

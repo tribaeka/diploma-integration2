@@ -1,0 +1,80 @@
+<div class="modal fade"
+     id="{{ isUpdateModal ? 'update' : 'create' }}CvModal"
+     tabindex="-1"
+     role="dialog"
+     [attr.aria-labelledby]="isUpdateModal ? 'update' : 'create' + 'CvModalLabel'"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"
+            id="{{ isUpdateModal ? 'update' : 'create' }}CvModalLabel">
+          {{ isUpdateModal ? 'Update' : 'Create' }} cv
+        </h5>
+        <button type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="createCvForm"
+            (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Title:</label>
+            <input formControlName="title"
+                   [class.is-valid]="createCvForm.get('title').valid
+                   && createCvForm.get('title').dirty"
+                   [class.is-invalid]="createCvForm.get('title').invalid
+                   && createCvForm.get('title').dirty"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter title">
+          </div>
+          <div class="form-group">
+            <label>Skills:</label>
+            <div (clickOutside)="closeDropDown()">
+              <input #skillsInput
+                     formControlName="skills"
+                     [class.is-valid]="createCvForm.get('skills').valid
+                   && createCvForm.get('skills').dirty"
+                     (focus)="openDropDown()"
+                     type="text"
+                     class="form-control"
+                     placeholder="Enter skills">
+              <ul *ngIf="showDropDown" class="search-drop-down list-unstyled">
+                <li *ngFor="let option of options | autocompleteFilter: createCvForm.get('skills').value"
+                    class="search-drop-down-item w-100"
+                    [ngClass]="{'bg-primary text-light': activeOption === option}"
+                    (click)="updateSkillsInputOnSelectOption(option); skillsInput.focus()"
+                    (mouseenter)="setActiveOption(option)"
+                    (mouseleave)="setActiveOption(null)">
+                  <span [innerHTML]="option | autocompleteBoldLetter: createCvForm.get('skills').value"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="custom-file">
+            <input #fileInput
+                   type="file"
+                   class="custom-file-input"
+                   id="customFile"
+                   (change)="handleFileInputChanges()">
+            <label class="custom-file-label" for="customFile">
+              {{ createCvForm.get('file').value || 'Choose file' }}
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button"
+                  #closeBtn
+                  class="btn btn-secondary"
+                  data-dismiss="modal">Cancel</button>
+          <button type="submit"
+                  class="btn btn-primary">{{ isUpdateModal ? 'Update' : 'Create' }}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<ul class="p-0 m-0">
+  <li *ngFor="let cv of cvList" class="list-unstyled">
+    <app-cv-list-item [cv]="cv"
+                      (cvIsDeleted)="removeDeletedCv($event)"></app-cv-list-item>
+  </li>
+</ul>
+<app-create-update-cv-form-modal [isUpdateModal]="true"
+                                 (onComplete)="updateCvList($event)">
+</app-create-update-cv-form-modal>

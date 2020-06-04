@@ -1,0 +1,198 @@
+<div class="container">
+  <div class="row">
+    <div *ngIf="step === 0" class="col-8 offset-2">
+      <form class="my-5 border bg-light rounded"
+            [formGroup]="companyForm"
+            (ngSubmit)="onCompanyFormSubmit()">
+        <h5 class="ml-3 mt-4">Create your company</h5>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Your Company Name</label>
+            <input formControlName="name"
+                   [class.is-valid]="companyForm.get('name').valid
+                   && companyForm.get('name').dirty"
+                   [class.is-invalid]="companyForm.get('name').invalid
+                   && companyForm.get('name').dirty"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter company name">
+          </div>
+          <div class="form-group">
+            <label>Company's site url</label>
+            <input formControlName="siteUrl"
+                   [class.is-valid]="companyForm.get('siteUrl').valid
+                   && companyForm.get('siteUrl').dirty"
+                   [class.is-invalid]="companyForm.get('siteUrl').invalid
+                   && companyForm.get('siteUrl').dirty"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter site URL">
+          </div>
+          <div class="custom-file">
+            <input #fileInput
+                   type="file"
+                   class="custom-file-input"
+                   id="customFile"
+                   required
+                   (change)="handleFileInputChanges()">
+            <label class="custom-file-label"
+                   for="customFile">
+              {{getFileLabel()}}
+            </label>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button type="submit"
+                  class="btn btn-lg btn-primary m-2">Next</button>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="step === 1" class="col-8 offset-2">
+    <form class="my-5 border bg-light rounded"
+          [formGroup]="contactForm"
+          (ngSubmit)="onContactFormSubmit()">
+      <h5 class="ml-3 mt-4">Add contact information</h5>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>First name</label>
+          <input formControlName="firstName"
+                 [class.is-valid]="contactForm.get('firstName').valid
+                   && contactForm.get('firstName').dirty"
+                 [class.is-invalid]="contactForm.get('firstName').invalid
+                   && contactForm.get('firstName').dirty"
+                 type="text"
+                 class="form-control"
+                 placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+          <label>Last name</label>
+          <input formControlName="lastName"
+                 [class.is-valid]="contactForm.get('lastName').valid
+                   && contactForm.get('lastName').dirty"
+                 [class.is-invalid]="contactForm.get('lastName').invalid
+                   && contactForm.get('lastName').dirty"
+                 type="text"
+                 class="form-control"
+                 placeholder="Enter last name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input formControlName="email"
+                 [class.is-valid]="contactForm.get('email').valid
+                   && contactForm.get('email').dirty"
+                 [class.is-invalid]="contactForm.get('email').invalid
+                   && contactForm.get('email').dirty"
+                 type="text"
+                 class="form-control"
+                 placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input formControlName="phone"
+                 [class.is-valid]="contactForm.get('phone').valid
+                   && contactForm.get('phone').dirty"
+                 [class.is-invalid]="contactForm.get('phone').invalid
+                   && contactForm.get('phone').dirty"
+                 type="text"
+                 class="form-control"
+                 placeholder="Enter phone number">
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="submit"
+                class="btn btn-lg btn-primary m-2">Next</button>
+      </div>
+    </form>
+  </div>
+    <div *ngIf="step === 2" class="col-8 offset-2">
+      <form class="my-5 border bg-light rounded"
+            [formGroup]="jobForm"
+            (ngSubmit)="onJobFormSubmit()">
+        <h5 class="ml-3 mt-4">Create job to post</h5>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Job's title</label>
+            <input formControlName="title"
+                   [class.is-valid]="jobForm.get('title').valid
+                   && jobForm.get('title').dirty"
+                   [class.is-invalid]="jobForm.get('title').invalid
+                   && jobForm.get('title').dirty"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter job's title">
+          </div>
+          <angular-editor formControlName="description"
+                          [config]="editorConfig"></angular-editor>
+          <div class="form-group mt-2">
+            <label>Job's location</label>
+            <input formControlName="location"
+                   [class.is-valid]="jobForm.get('location').valid
+                   && jobForm.get('location').dirty"
+                   [class.is-invalid]="jobForm.get('location').invalid
+                   && jobForm.get('location').dirty"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter job's location">
+          </div>
+          <div class="form-group">
+            <label>Work experience in years</label>
+            <input formControlName="experience"
+                   [class.is-valid]="jobForm.get('experience').valid
+                   && jobForm.get('experience').dirty"
+                   [class.is-invalid]="jobForm.get('experience').invalid
+                   && jobForm.get('experience').dirty"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter work experience in years">
+          </div>
+          <div class="form-group">
+            <label>Salary in USD</label>
+            <input formControlName="salary"
+                   [class.is-valid]="jobForm.get('salary').valid
+                   && jobForm.get('salary').dirty"
+                   [class.is-invalid]="jobForm.get('salary').invalid
+                   && jobForm.get('salary').dirty"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter salary in USD">
+          </div>
+          <div class="form-group">
+            <label>Recommended skills</label>
+            <div (clickOutside)="closeDropDown()">
+              <input #skillsInput
+                     formControlName="jobSkillSet"
+                     [class.is-valid]="jobForm.get('jobSkillSet').value"
+                     (focus)="openDropDown()"
+                     type="text"
+                     class="form-control"
+                     placeholder="Enter skills">
+              <ul *ngIf="showDropDown" class="search-drop-down list-unstyled">
+                <li *ngFor="let option of options | autocompleteFilter: jobForm.get('jobSkillSet').value"
+                    class="search-drop-down-item w-100"
+                    [ngClass]="{'bg-primary text-light': activeOption === option}"
+                    (click)="updateSkillsInputOnSelectOption(option); skillsInput.focus()"
+                    (mouseenter)="setActiveOption(option)"
+                    (mouseleave)="setActiveOption(null)">
+                  <span [innerHTML]="option | autocompleteBoldLetter: jobForm.get('jobSkillSet').value"></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end">
+          <button type="submit"
+                  class="btn btn-lg btn-primary m-2">Finish</button>
+        </div>
+      </form>
+    </div>
+    <div *ngIf="step === 0" class="col-6 offset-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Your job was posted successfully</h5>
+          <p class="card-text">You will get email notification with CV for this post</p>
+          <a href="#" class="card-link">Go to homepage</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

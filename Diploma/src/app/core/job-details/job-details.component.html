@@ -1,0 +1,37 @@
+<div class="container-fluid p-4"
+     *ngIf="job">
+  <div class=" px-4 border border-secondary rounded">
+    <div class="row py-4">
+      <div class="col-10">
+        <h2>{{job.title}}</h2>
+        <span>{{job.location}}</span>
+        <br>
+        <span>Required experience: {{job.experience}}</span>
+        <hr>
+      </div>
+      <div class="col-2 d-flex justify-content-end">
+        <div *ngIf="tokenStorage.isLoggedIn()">
+          <button class="btn-lg btn-success"
+                  data-toggle="modal"
+                  data-target="#jobRespondModal">
+            To respond
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-7">
+        <div [innerHTML]="job.description"></div>
+      </div>
+      <div class="col-4 offset-1 my-4">
+        <app-company-side-bar [company]="job.companiesJob"></app-company-side-bar>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isSearchQueryExist" class="row">
+    <div class="col-12">
+      <app-similar-jobs [jobToExclude]="job"></app-similar-jobs>
+    </div>
+  </div>
+  <app-job-respond-modal [job]="job"></app-job-respond-modal>
+</div>

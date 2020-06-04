@@ -1,0 +1,15 @@
+<div class="row bg-light p-5">
+  <div class="col-12">
+    <h2>Popular search build:</h2>
+    <hr>
+    <div class="row d-flex justify-content-center">
+      <div class="col-5 card m-2" *ngFor="let build of builds | keyvalue">
+        <div class="card-body">
+          <a class="px-2 text-info" (click)="navigateToSearch(build.value)" [routerLink]="['search/', build.value]">
+            {{build.key}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

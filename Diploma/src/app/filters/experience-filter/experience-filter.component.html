@@ -1,0 +1,25 @@
+<div class="row py-4">
+  <div class="col-12">
+    <div class="dropdown">
+      Experience:
+      <button class="btn btn-info dropdown-toggle"
+              type="button" id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
+        {{getDisplayedValue()}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item"
+           (click)="applyExperienceFilter(-1)">
+          All
+        </a>
+        <a class="dropdown-item"
+           *ngFor="let experience of listOfExperiences"
+           (click)="applyExperienceFilter(experience)">
+          {{getDisplayedValue(experience)}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row py-4 bg-secondary">
+    <div class="col-11 offset-1">
+      <app-job-search-input target="job" [isSubQueryEnabled]="true"></app-job-search-input>
+    </div>
+  </div>
+  <div class="row result-loader-wrapper" *ngIf="isLoading">
+    <div class="col-12 d-flex align-items-center justify-content-center">
+      <app-loader></app-loader>
+    </div>
+  </div>
+  <div class="row" *ngIf="!isLoading">
+    <div class="col-4 my-5">
+      <app-job-filter (onUpdateResults)="updateResults($event)" [jobs]="initResults"></app-job-filter>
+    </div>
+    <div class="col-7 my-5">
+      <app-skill-set [isActiveSkillSet]="true"></app-skill-set>
+      <app-job-list [jobs]="results"></app-job-list>
+    </div>
+  </div>
+</div>

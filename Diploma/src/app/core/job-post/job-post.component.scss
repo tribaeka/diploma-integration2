@@ -1,0 +1,16 @@
+.search-drop-down {
+  margin-top: -2px;
+  position: absolute;
+  width: 600px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 10;
+  background-color: #ffffff;
+  opacity: 0.95;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+
+  &-item {
+    padding: 6px 12px;
+  }
+}

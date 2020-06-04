@@ -1,0 +1,82 @@
+<div class="modal fade"
+     id="registrationModal"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="registrationModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"
+            id="exampleModalLabel">Registration</h5>
+        <button type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Username:</label>
+            <input formControlName="username"
+                   [class.is-valid]="registrationForm.get('username').valid
+                   && registrationForm.get('username').dirty"
+                   [class.is-invalid]="registrationForm.get('username').invalid
+                   && registrationForm.get('username').dirty"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter username">
+          </div>
+          <div class="form-group">
+            <label>Email:</label>
+            <input formControlName="email"
+                   [class.is-valid]="registrationForm.get('email').valid
+                   && registrationForm.get('email').dirty"
+                   [class.is-invalid]="registrationForm.get('email').invalid
+                   && registrationForm.get('email').dirty"
+                   type="email"
+                   class="form-control"
+                   placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label>Phone:</label>
+            <input formControlName="phone"
+                   [class.is-valid]="registrationForm.get('phone').valid
+                   && registrationForm.get('phone').dirty"
+                   [class.is-invalid]="registrationForm.get('phone').invalid
+                   && registrationForm.get('phone').dirty"
+                   type="text"
+                   class="form-control"
+                   placeholder="Enter phone number">
+          </div>
+          <div class="form-group">
+            <label>Password:</label>
+            <input  formControlName="password"
+                    [class.is-valid]="registrationForm.get('password').valid
+                   && registrationForm.get('password').dirty"
+                    [class.is-invalid]="registrationForm.get('password').invalid
+                   && registrationForm.get('password').dirty"
+                    type="password"
+                    class="form-control"
+                    placeholder="Enter password"
+                    aria-describedby="passwordHelp">
+            <small id="passwordHelp"
+                   class="form-text text-muted">
+              Password should contain from 6 to to 20 symbols
+            </small>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button"
+                  #closeBtn
+                  class="btn btn-secondary"
+                  data-dismiss="modal">Close</button>
+          <button type="submit"
+                  class="btn btn-primary">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
