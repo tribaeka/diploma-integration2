@@ -56,7 +56,7 @@ public class CvController {
 
     @GetMapping("/download/{id}")
     public ResponseEntity<byte[]> downloadCv(@PathVariable("id") Cv cv) throws IOException {
-        Path path = Paths.get(cvFilesPath + "/" + cv.getFileName());
+        Path path = Paths.get(cvFilesPath + cv.getFileName());
         byte[] data = Files.readAllBytes(path);
         HttpHeaders respHeaders = new HttpHeaders();
         respHeaders.setContentLength(data.length);

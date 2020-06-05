@@ -10,15 +10,14 @@ import java.util.UUID;
 @Service
 public class FileService {
     public String saveFileToFolder(MultipartFile file, String folderPath) throws IOException {
-        String folder = new File("").getAbsolutePath() + folderPath;
-        File uploadDir = new File(folder);
+        File uploadDir = new File(folderPath);
         if (!uploadDir.exists()){
             uploadDir.mkdir();
         }
 
         String uuidFile = UUID.randomUUID().toString();
         String resultFileName = uuidFile + "!" + file.getOriginalFilename();
-        file.transferTo(new File(folder + resultFileName ));
+        file.transferTo(new File(folderPath + resultFileName ));
 
         return resultFileName;
     }
