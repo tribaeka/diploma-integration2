@@ -13,16 +13,16 @@ public class MvcConfig implements WebMvcConfigurer {
     private String companyImagesPath;
     @Value("${static.image.path}")
     private String staticImagePath;
-
+    private String folder = new File("").getAbsolutePath();
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/img/**")
-                .addResourceLocations("file://" + staticImagePath + "img/");
+                .addResourceLocations("file://" + folder + staticImagePath + "img/");
         registry.addResourceHandler("/img/flags/**")
-                .addResourceLocations("file://" + staticImagePath + "img/location-flags/");
+                .addResourceLocations("file://" + folder + staticImagePath + "img/location-flags/");
         registry.addResourceHandler("/img/company/**")
-                .addResourceLocations("file://" + companyImagesPath);
+                .addResourceLocations("file://" + folder + companyImagesPath);
         registry.addResourceHandler("/img/user/**")
-                .addResourceLocations("file://" + userImagesPath);
+                .addResourceLocations("file://" + folder + userImagesPath);
     }
 }
