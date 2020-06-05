@@ -77,12 +77,12 @@ export class CreateUpdateCvFormModalComponent implements OnInit {
     }
     fd.append('user', this.tokenStorage.getUser().userId.toString());
     if (this.isUpdateModal) {
-      this.http.put<Cv>('http://localhost:8080/cv/' + this.cvToUpdate.cvId, fd)
+      this.http.put<Cv>('http://35.228.149.66/:8080/cv/' + this.cvToUpdate.cvId, fd)
         .subscribe(updatedCv => {
           this.finalizeSuccess(updatedCv);
         });
     } else {
-      this.http.post('http://localhost:8080/cv', fd)
+      this.http.post('http://35.228.149.66/:8080/cv', fd)
         .subscribe(response => {
           this.finalizeSuccess();
         });
