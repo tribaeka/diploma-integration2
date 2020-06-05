@@ -18,6 +18,7 @@ public class MvcConfig implements WebMvcConfigurer {
     private String folder = new File("").getAbsolutePath();
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        System.out.println(folder);
         registry.addResourceHandler("/img/**")
                 .addResourceLocations("file://" + folder + staticImagePath + "img/");
         registry.addResourceHandler("/img/flags/**")
