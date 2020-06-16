@@ -32,7 +32,7 @@ INSERT INTO diploma.user (user_id, active, email, image_name, password, phone, u
 INSERT INTO diploma.user (user_id, active, email, image_name, password, phone, username) VALUES (8, false, 'Roberta_Schaefer@gmail.com', null, 'rs1234', '234523467', 'Roberta.Schaefer');
 INSERT INTO diploma.user (user_id, active, email, image_name, password, phone, username) VALUES (9, false, 'Shelley_Harding', null, 'sh1234', '456485894', 'Shelley.Harding');
 INSERT INTO diploma.user (user_id, active, email, image_name, password, phone, username) VALUES (10, false, 'Taybah_House@gmail.com', null, 'th1234', '083474234', 'Taybah.House');
-INSERT INTO diploma.user (user_id, active, email, image_name, password, phone, username) VALUES (11, false, 'user@gmail.com', null, '$2a$14$MR848aowHq/xbmedJESEoOBUnncnG7XEscm66enVVj5b36GfU17vu', null, 'user');
+INSERT INTO diploma.user (user_id, active, email, image_name, password, phone, username) VALUES (11, false, 'user@gmail.com', null, '$2a$14$MR848aowHq/xbmedJESEoOBUnncnG7XEscm66enVVj5b36GfU17vu', '23425253', 'user');
 INSERT INTO diploma.user (user_id, active, email, image_name, password, phone, username) VALUES (12, false, 'owner@mail.com', null, '$2a$14$MSkl8tjFQ0NFXXtJrlIh7OEXG.2FHpNuY8v6JvBjdNlWvWWUM4xo.', null, 'owner');
 
 INSERT INTO diploma.user_roles (user_id, role_id) VALUES (1, 1);

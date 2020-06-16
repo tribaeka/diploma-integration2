@@ -100,7 +100,7 @@ public class UtilController {
         message
                 .append("\n\tComment from writer:\n\t\t")
                 .append(comment)
-                .append("\n\tLink to download full cv: http://http://35.228.149.66:8080/cv/download/")
+                .append("\n\tLink to download full cv: http://35.228.149.66:8080/cv/download/")
                 .append(cv.getCvId())
                 .append("\n\n You can contact with writer by contacts bellow:")
                 .append("\n\tEmail:")
